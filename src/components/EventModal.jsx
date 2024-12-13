@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const EventModal = ({ isOpen, onClose, onSave, initialEvent }) => {
-  const [event, setEvent] = useState(initialEvent || { name: "", startTime: "", endTime: "", description: "" });
+  const [event, setEvent] = useState(initialEvent || { name: "", startTime: "", endTime: "", description: "", category: "Work" });
 
   const handleSave = () => {
     if (new Date(event.startTime) >= new Date(event.endTime)) {
@@ -14,7 +14,7 @@ const EventModal = ({ isOpen, onClose, onSave, initialEvent }) => {
 
   return (
     isOpen && (
-      <div className="fixed inset-0 flex items-center justify-center  bg-opacity-50">
+      <div className="fixed inset-0 flex items-center justify-center bg-opacity-50">
         <div className="bg-white p-4 rounded-md">
           <h2 className="text-lg font-bold">{initialEvent ? "Edit Event" : "Add Event"}</h2>
           <input
@@ -42,12 +42,17 @@ const EventModal = ({ isOpen, onClose, onSave, initialEvent }) => {
             onChange={(e) => setEvent({ ...event, description: e.target.value })}
             className="block w-full p-2 border mb-2"
           />
-          <button onClick={handleSave} className="bg-blue-600 text-white px-4 py-2 rounded">
-            Save
-          </button>
-          <button onClick={onClose} className="bg-gray-400 text-white px-4 py-2 rounded ml-2">
-            Cancel
-          </button>
+          <select
+            value={event.category}
+            onChange={(e) => setEvent({ ...event, category: e.target.value })}
+            className="block w-full p-2 border mb-2"
+          >
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Other">Other</option>
+          </select>
+          <button onClick={handleSave} className="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
+          <button onClick={onClose} className="bg-gray-400 text-white px-4 py-2 rounded ml-2">Cancel</button>
         </div>
       </div>
     )
