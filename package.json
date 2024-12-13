@@ -5,9 +5,12 @@
   "dependencies": {
     "@shadcn/ui": "^0.0.4",
     "cra-template": "1.2.0",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^11.14.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-tsparticles": "^2.12.2"
   },
   "scripts": {
     "start": "react-scripts start",
